@@ -5,7 +5,7 @@
 // ! set todays date
 let today = new Date().toISOString().slice(0, 10);
 console.log(today);
-
+console.log(process.env.API_KEY);
 // !target date input and set it's max and initial value to todays date
 const val = document.querySelector('input');
 val.max = today;
@@ -15,7 +15,7 @@ val.value = today;
 document.querySelector('button').addEventListener('click', getPicture);
 function getPicture() {
 	// * add query parameter for date, that accepts the input value - checked docs for formatting - made sure to include '&key=' syntax for query param
-	const url = `https://api.nasa.gov/planetary/apod?api_key=atWx8gmZjdnHgnlPYgygQAk9ifQ6KwTqCRpSFpK5&date=${val.value}`;
+	const url = `https://api.nasa.gov/planetary/apod?api_key=APIKEY=${val.value}`;
 	fetch(url)
 		.then(res => res.json())
 		// *pass in data received to a display function
